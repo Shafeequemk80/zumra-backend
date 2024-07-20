@@ -48,6 +48,17 @@ app.post("/", async (req, res) => {
 });
 
 
+
+app.get('/download', (req, res) => {
+  const filePath = path.join(__dirname, 'public', 'Zumra.pdf'); // Replace with the path to your file
+  res.sendFile(filePath, (err) => {
+    if (err) {
+      console.error('Error sending file:', err);
+      res.status(500).send('Error sending file');
+    }
+  });
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
