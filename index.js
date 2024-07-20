@@ -4,7 +4,7 @@ const Counter = require("./CounterModel");
 var cors = require('cors')
 const app = express();
 const PORT = 5000;
-
+const path= require('path')
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -50,6 +50,7 @@ app.post("/", async (req, res) => {
 
 
 app.get('/download', (req, res) => {
+
   const filePath = path.join(__dirname, 'public', 'Zumra.pdf'); // Replace with the path to your file
   res.sendFile(filePath, (err) => {
     if (err) {
